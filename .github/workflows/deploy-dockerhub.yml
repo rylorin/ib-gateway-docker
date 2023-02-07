@@ -39,4 +39,4 @@ jobs:
           tags: ${{ github.repository }}:${{ matrix.IBG_VERSION }}
           context: .
           build-args: IBG_VERSION=${{ matrix.IBG_VERSION }}
-          platforms: linux/amd64,linux/arm64v8
+#          platforms: linux/amd64,linux/arm64v8
