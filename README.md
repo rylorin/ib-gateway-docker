@@ -12,11 +12,11 @@ More information available on [Github repository](https://github.com/rylorin/ib-
 
 This docker image contains:
 
-- [Python](https://hub.docker.com/_/python) (3.9-slim)
+- [Python](https://hub.docker.com/_/python) (3.11-slim)
 
 - [IB Gateway](https://www.interactivebrokers.com/en/index.php?f=16457) (stable, latest)
 
-- [IBC](https://github.com/IbcAlpha/IBC) (3.15.2)
+- [IBC](https://github.com/IbcAlpha/IBC) (3.16.0)
 
 - [ib_insync](https://github.com/erdewit/ib_insync) (0.9.71)
 

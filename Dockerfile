@@ -1,15 +1,16 @@
-FROM python:3.9-slim
+FROM python:3.11-slim
+# FROM arm64v8/python
 
 ARG IBG_VERSION=stable
 ENV IBG_VERSION=${IBG_VERSION:-stable}
-ENV IBC_VERSION=3.15.2
+ENV IBC_VERSION=3.16.0
 ENV IB_INSYNC_VERSION=0.9.71
 
 RUN echo building IB GW ${IBG_VERSION}
 
 # install dependencies
-RUN apt-get update \
- && apt-get install -y \
+RUN apt update \
+ && apt install -y --no-install-recommends \
   wget \
   unzip \
   xvfb \
@@ -24,7 +25,6 @@ RUN apt-get update \
   xterm \
   x11vnc
 RUN apt install -y openjdk-17-jre
-# RUN python -m pip install --upgrade pip
 RUN pip install ib_insync==${IB_INSYNC_VERSION} google-cloud-secret-manager==2.11.1
 
 # set environment variables
