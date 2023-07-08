@@ -1,4 +1,4 @@
-FROM python:3.11-slim
+FROM python:3.11
 # FROM arm64v8/python
 
 ARG IBG_VERSION=stable
@@ -9,8 +9,7 @@ ENV IB_INSYNC_VERSION=0.9.71
 RUN echo building IB GW ${IBG_VERSION}
 
 # install dependencies
-RUN apt update \
- && apt install -y --no-install-recommends \
+RUN apt update && apt install -y --no-install-recommends \
   wget \
   unzip \
   xvfb \
