@@ -3,7 +3,7 @@ FROM python:3.11-slim
 
 ARG IBG_VERSION=stable
 ENV IBG_VERSION=${IBG_VERSION:-stable}
-ENV IBC_VERSION=3.16.2
+ENV IBC_VERSION=3.17.0-update.1
 ENV IB_INSYNC_VERSION=0.9.71
 
 RUN echo building IB GW ${IBG_VERSION}
@@ -82,7 +82,7 @@ ENV IBGW_WATCHDOG_PROBE_TIMEOUT 10
 
 EXPOSE $IBGW_PORT
 
-HEALTHCHECK --interval=20s --timeout=10s --start-period=30s --retries=3 \
+HEALTHCHECK --interval=20s --timeout=10s --start-period=60s --retries=3 \
   CMD python healthcheck.py || exit 1
 
 ENTRYPOINT [ "sh", "/root/cmd.sh" ] 
