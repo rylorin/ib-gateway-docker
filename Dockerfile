@@ -3,8 +3,9 @@ FROM python:3.11
 
 ARG IBG_VERSION=stable
 ENV IBG_VERSION=${IBG_VERSION:-stable}
-ENV IBC_VERSION=3.17.0
-ENV IB_INSYNC_VERSION=0.9.71
+ENV IBC_VERSION=3.18.0
+ENV IBC_VERSION_FIX=-Update.1
+ENV IB_INSYNC_VERSION=0.9.72
 
 RUN echo building IB GW ${IBG_VERSION}
 
@@ -24,6 +25,7 @@ RUN apt update && apt install -y --no-install-recommends \
   xterm \
   x11vnc
 RUN apt install -y openjdk-17-jre
+RUN pip install --upgrade pip
 RUN pip install ib_insync==${IB_INSYNC_VERSION} google-cloud-secret-manager==2.11.1
 
 # set environment variables
@@ -39,7 +41,7 @@ ENV TWS_INSTALL_LOG=/root/Jts/tws_install.log \
 RUN mkdir -p /tmp && mkdir -p ${ibcPath} && mkdir -p ${twsPath}
 
 # download & install IBC
-RUN wget -q -O /tmp/IBC.zip https://github.com/IbcAlpha/IBC/releases/download/${IBC_VERSION}/IBCLinux-${IBC_VERSION}.zip
+RUN wget -q -O /tmp/IBC.zip https://github.com/IbcAlpha/IBC/releases/download/${IBC_VERSION}${IBC_VERSION_FIX}/IBCLinux-${IBC_VERSION}.zip
 RUN unzip /tmp/IBC.zip -d ${ibcPath}
 RUN chmod +x ${ibcPath}/*.sh ${ibcPath}/*/*.sh
 # remove downloaded files
@@ -81,7 +83,7 @@ ENV IBGW_WATCHDOG_PROBE_TIMEOUT 10
 
 EXPOSE $IBGW_PORT
 
-HEALTHCHECK --interval=20s --timeout=10s --start-period=60s --retries=3 \
+HEALTHCHECK --interval=20s --timeout=10s --start-period=90s --retries=3 \
   CMD python healthcheck.py || exit 1
 
 ENTRYPOINT [ "sh", "/root/cmd.sh" ] 

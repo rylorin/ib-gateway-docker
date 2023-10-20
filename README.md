@@ -16,9 +16,9 @@ This docker image contains:
 
 - [IB Gateway](https://www.interactivebrokers.com/en/index.php?f=16457) (stable, latest)
 
-- [IBC](https://github.com/IbcAlpha/IBC) (3.17.0)
+- [IBC](https://github.com/IbcAlpha/IBC) (3.18.0)
 
-- [ib_insync](https://github.com/erdewit/ib_insync) (0.9.71)
+- [ib_insync](https://github.com/erdewit/ib_insync) (0.9.72)
 
 - [google-cloud-secret-manager](https://github.com/googleapis/python-secret-manager) (2.11.1)
 

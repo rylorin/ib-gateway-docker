@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+# set -x
 
 echo "Starting Xvfb..."
 rm -f /tmp/.X0-lock
