@@ -83,7 +83,7 @@ ENV IBGW_WATCHDOG_PROBE_TIMEOUT 10
 
 EXPOSE $IBGW_PORT
 
-HEALTHCHECK --interval=20s --timeout=10s --start-period=90s --retries=3 \
+HEALTHCHECK --interval=20s --timeout=10s --start-period=60s --retries=3 \
   CMD python healthcheck.py || exit 1
 
 ENTRYPOINT [ "sh", "/root/cmd.sh" ] 

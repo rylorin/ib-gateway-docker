@@ -18,7 +18,7 @@ if [ -n "$VNC_SERVER_PASSWORD" ]; then
 fi
 
 echo "Setup port forwarding..."
-socat TCP-LISTEN:$IBGW_PORT,fork TCP:localhost:4001,forever &
+socat TCP-LISTEN:$IBGW_PORT,fork TCP:localhost:4001,forever 1>>/var/logsocat.log 2>&1 &
 
 echo "*****************************"
 
