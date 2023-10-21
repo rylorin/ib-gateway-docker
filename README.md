@@ -38,7 +38,7 @@ docker run -d \
 --env IB_PASSWORD= \ # YOUR_PASSWORD  
 --env TRADE_MODE= \ # paper or live 
 --publish 4002:4002 \ # brige IB gateway port to your local port 4002
---publish 5009:5009 \ # VNC server running on local port 5009
+--publish 5900:5900 \ # VNC server running on local port 5900
 rylorin/ib-gateway-docker tail -f ./Jts/launcher.log
 ```
 
