@@ -1,5 +1,5 @@
 # IB Gateway stack
-version: '3.7'
+version: "3.8"
 
 services:
   tws:
@@ -11,13 +11,18 @@ services:
       VNC_SERVER_PASSWORD: ${VNC_SERVER_PASSWORD:-}
       IB_GATEWAY_PING_CLIENT_ID: ${IB_GATEWAY_PING_CLIENT_ID:-1001}
       IBGW_WATCHDOG_CLIENT_ID: ${IBGW_WATCHDOG_CLIENT_ID:-1002}
-#      TZ: UTC
     restart: unless-stopped
     networks:
       - default
     ports:
-      - "4002:4002"
-      - "5900:5900"
+      - target: 4002
+        published: 4002
+        protocol: tcp
+        mode: ingress
+      - target: 5900
+        published: 5900
+        protocol: tcp
+        mode: ingress
     deploy:
       placement:
         constraints:
