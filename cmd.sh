@@ -12,13 +12,13 @@ while ! xdpyinfo -display "${DISPLAY}"; do
 done
 echo "Xvfb is ready"
 
-if [ -n "$VNC_SERVER_PASSWORD" ]; then
+if [ -n "${VNC_SERVER_PASSWORD}" ]; then
   echo "Starting VNC server"
-  x11vnc -ncache_cr -display "${DISPLAY}" -forever -shared -logappend /var/log/x11vnc.log -bg -noipv6 -passwd "$VNC_SERVER_PASSWORD"
+  x11vnc -ncache_cr -display "${DISPLAY}" -forever -shared -logappend /var/log/x11vnc.log -bg -noipv6 -passwd "${VNC_SERVER_PASSWORD}"
 fi
 
 echo "Setup port forwarding..."
-socat TCP-LISTEN:$IBGW_PORT,fork TCP:localhost:4001,forever 1>>/var/logsocat.log 2>&1 &
+socat TCP-LISTEN:${IBGW_PORT},fork TCP:localhost:4001,forever 1>>/var/log/socat.log 2>&1 &
 
 echo "*****************************"
 
