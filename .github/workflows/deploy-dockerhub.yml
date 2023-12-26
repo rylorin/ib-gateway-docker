@@ -22,7 +22,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 9
+    timeout-minutes: 10
     strategy:
       matrix:
         IBG_VERSION: [stable, latest]
