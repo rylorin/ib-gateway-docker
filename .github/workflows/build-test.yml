@@ -13,8 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.pull_request.draft == false
     timeout-minutes: 12
-    env:
-      IMAGE_NAME: ib-gateway-docker
+    # env:
+    #   IMAGE_NAME: ib-gateway-docker
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -29,7 +29,7 @@ jobs:
           if [ -f requirements-test.txt ]; then pip install -r requirements-test.txt; fi
           
       - name: Build Docker image
-        run: docker build -t $IMAGE_NAME .
+        run: docker build -t ${{ github.repository }} .
         
       - name: Smoke tests container image
         run: pytest -x
@@ -43,10 +43,10 @@ jobs:
           docker run --rm \
           -e IB_ACCOUNT=$IB_ACCOUNT \
           -e IB_PASSWORD=$IB_PASSWORD \
-          -e TRADE_MODE=paper \
+          -e TRADE_MODE=$TRADE_MODE \
           -p 4001:4002 \
           -d \
-          $IMAGE_NAME tail -f /dev/null;
+          ${{ github.repository }} tail -f /dev/null;
           sleep 30;
           pip install ib_insync pandas;
           python examples/ib_insync/scripts/connect_gateway.py;
@@ -73,7 +73,7 @@ jobs:
 #          -e GOOGLE_APPLICATION_CREDENTIALS=/tmp/keys/credentials.json \
 #          -v $GOOGLE_APPLICATION_CREDENTIALS:/tmp/keys/credentials.json:ro \
 #          -d \
-#          $IMAGE_NAME;
+#          ${{ github.repository }};
 #          sleep 30;
 #          if [ -z  "$(docker ps -a -q)" ]; then exit 1; fi
 #        env:
