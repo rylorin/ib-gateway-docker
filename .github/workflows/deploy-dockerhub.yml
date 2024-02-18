@@ -20,7 +20,7 @@ on:
     - cron: "0 3 * * 0" # Runs at 03:00 AM (UTC) every Sunday
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     timeout-minutes: 14
     strategy:
@@ -35,7 +35,7 @@ jobs:
         with:
           username: ${{ github.actor }}
           password: ${{ secrets.DOCKER_TOKEN }}
-          
+
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
