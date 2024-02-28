@@ -15,7 +15,7 @@ services:
     networks:
       - default
     ports:
-      - target: 4001
+      - target: 4002
         published: 4002
         protocol: tcp
         mode: ingress

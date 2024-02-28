@@ -9,7 +9,7 @@ if __name__ == "__main__":
         clientId = int(random.random() * 15359) + 1024
     ib = IB()
     # ib.connect('localhost', int(os.environ['IBGW_PORT']), clientId)
-    ib.connect('localhost', 4001, clientId)
+    ib.connect('localhost', 4002, clientId)
     contract = Forex('EURUSD')
     bars = ib.reqHistoricalData(
         contract, endDateTime='', durationStr='5 D',

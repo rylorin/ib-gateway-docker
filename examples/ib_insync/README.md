@@ -18,7 +18,7 @@ docker run --rm \
 -e IB_ACCOUNT=$IB_ACCOUNT \
 -e IB_PASSWORD=$IB_PASSWORD \
 -e TRADE_MODE=$TRADE_MODE \
--p 4002:4001 \
+-p 4002:4002 \
 -d \
 rylorin/ib-gateway-docker:latest tail -f /dev/null
 

@@ -19,7 +19,7 @@ def host(request):
         '--env', 'IB_ACCOUNT={}'.format(account),
         '--env', 'IB_PASSWORD={}'.format(password),
         '--env', 'TRADE_MODE={}'.format(trade_mode),
-        '-p', '4002:4001',
+        '-p', '4002:4002',
         '-d', IMAGE_NAME, 
         "tail", "-f", "/dev/null"]).decode().strip()
     # return a testinfra connection to the container
@@ -40,7 +40,7 @@ wait = 60
 while not ib.isConnected():
     try:
         IB.sleep(1)
-        ib.connect('localhost', 4001, clientId=998)
+        ib.connect('localhost', 4002, clientId=998)
     except (ConnectionRefusedError, OSError, TimeoutError):
         pass
     wait -= 1
