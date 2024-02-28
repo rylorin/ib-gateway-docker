@@ -85,7 +85,7 @@ ENV IBGW_WATCHDOG_PROBE_TIMEOUT 10
 EXPOSE 4001/tcp
 EXPOSE 5900/tcp
 
-HEALTHCHECK --interval=20s --timeout=10s --start-period=90s --retries=3 \
-  CMD python healthcheck.py || exit 1
+# HEALTHCHECK --interval=20s --timeout=10s --start-period=90s --retries=3 \
+#   CMD python healthcheck.py || exit 1
 
 ENTRYPOINT [ "sh", "/root/cmd.sh" ] 
