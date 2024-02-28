@@ -81,7 +81,8 @@ ENV IBGW_WATCHDOG_APP_TIMEOUT 20
 ENV IBGW_WATCHDOG_RETRY_DELAY 5
 ENV IBGW_WATCHDOG_PROBE_TIMEOUT 10
 
-EXPOSE $IBGW_PORT
+EXPOSE $IBGW_PORT/tcp
+EXPOSE 5900/tcp
 
 HEALTHCHECK --interval=20s --timeout=10s --start-period=90s --retries=3 \
   CMD python healthcheck.py || exit 1
