@@ -39,6 +39,7 @@ jobs:
           IB_ACCOUNT: ${{ secrets.IB_ACCOUNT }}
           IB_PASSWORD: ${{ secrets.IB_PASSWORD }}
           TRADE_MODE: paper
+          IMAGE_NAME: ${{ github.repository }}
 
       - name: Run ib_insync example
         run: |
@@ -46,7 +47,7 @@ jobs:
           -e IB_ACCOUNT=$IB_ACCOUNT \
           -e IB_PASSWORD=$IB_PASSWORD \
           -e TRADE_MODE=$TRADE_MODE \
-          -p 4001:4001 \
+          -p 4002:4001 \
           -d \
           ${{ github.repository }} tail -f /dev/null;
           sleep 30;
@@ -57,6 +58,7 @@ jobs:
           IB_ACCOUNT: ${{ secrets.IB_ACCOUNT }}
           IB_PASSWORD: ${{ secrets.IB_PASSWORD }}
           TRADE_MODE: paper
+          IMAGE_NAME: ${{ github.repository }}
 
 #      - uses: "google-github-actions/setup-gcloud@v0"
 #        with:

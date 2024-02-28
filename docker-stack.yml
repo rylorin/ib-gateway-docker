@@ -7,7 +7,7 @@ services:
     environment:
       IB_ACCOUNT: ${TWS_USERID}
       IB_PASSWORD: ${TWS_PASSWORD}
-      TRADE_MODE: ${TRADING_MODE:-paper}
+      TRADE_MODE: ${TRADE_MODE:-paper}
       VNC_SERVER_PASSWORD: ${VNC_SERVER_PASSWORD:-}
       IB_GATEWAY_PING_CLIENT_ID: ${IB_GATEWAY_PING_CLIENT_ID:-1001}
       IBGW_WATCHDOG_CLIENT_ID: ${IBGW_WATCHDOG_CLIENT_ID:-1002}
@@ -16,7 +16,7 @@ services:
       - default
     ports:
       - target: 4001
-        published: 4001
+        published: 4002
         protocol: tcp
         mode: ingress
       - target: 5900

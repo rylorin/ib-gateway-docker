@@ -20,6 +20,7 @@ def host(request):
         '--env', 'IB_ACCOUNT={}'.format(account),
         '--env', 'IB_PASSWORD={}'.format(password),
         '--env', 'TRADE_MODE={}'.format(trade_mode),
+        '-p', '4002:4001' \
         '-d', IMAGE_NAME, 
         "tail", "-f", "/dev/null"]).decode().strip()
     # return a testinfra connection to the container
@@ -32,7 +33,7 @@ def test_ib_connect_fail(host):
 from ib_insync import *
 IB.sleep(60)
 ib = IB()
-ib.connect('localhost', 4001, clientId=998)
+ib.connect('localhost', 4002, clientId=998)
 ib.disconnect()
 """
     cmd = host.run("python -c \"{}\"".format(script))
