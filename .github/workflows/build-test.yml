@@ -9,10 +9,10 @@ on:
   pull_request:
 
 jobs:
-  build:
+  tests:
     runs-on: ubuntu-latest
     if: github.event.pull_request.draft == false
-    timeout-minutes: 20
+    timeout-minutes: 25
     # env:
     #   IMAGE_NAME: ib-gateway-docker
     steps:
