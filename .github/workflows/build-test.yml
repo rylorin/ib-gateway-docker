@@ -12,7 +12,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     if: github.event.pull_request.draft == false
-    timeout-minutes: 13
+    timeout-minutes: 14
     # env:
     #   IMAGE_NAME: ib-gateway-docker
     steps:
@@ -21,7 +21,9 @@ jobs:
 
       - name: Setup python
         uses: actions/setup-python@v5
-
+        with:
+          python-version: '3.11' 
+      
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
