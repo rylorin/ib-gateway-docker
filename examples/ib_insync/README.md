@@ -18,7 +18,7 @@ docker run --rm \
 -e IB_ACCOUNT=$IB_ACCOUNT \
 -e IB_PASSWORD=$IB_PASSWORD \
 -e TRADE_MODE=$TRADE_MODE \
--p 4001:4002 \
+-p 4001:4001 \
 -d \
 manhinhang/ib-gateway-docker:latest tail -f /dev/null
 
