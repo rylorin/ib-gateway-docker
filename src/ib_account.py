@@ -43,5 +43,3 @@ class IBAccount(object):
             else:
                 return 'paper'
         return cls.retrieve_secret(os.environ['GCP_SECRET_IB_TRADE_MODE'])
-
-    

@@ -28,12 +28,14 @@ def host(request):
     # at the end of the test suite, destroy the container
     subprocess.check_call(['docker', 'rm', '-f', docker_id])
 
+# We try to connect to port 22 where IBGW is not supposed to listen
+# and should get an error. The test is valid when the script stops with an error
 def test_ib_connect_fail(host):
     script = """
 from ib_insync import *
 IB.sleep(60)
 ib = IB()
-ib.connect('localhost', 4002, clientId=998)
+ib.connect('localhost', 22, clientId=998)
 ib.disconnect()
 """
     cmd = host.run("python -c \"{}\"".format(script))

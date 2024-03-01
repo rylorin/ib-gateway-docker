@@ -15,12 +15,12 @@ services:
     networks:
       - default
     ports:
-      - target: 4002
-        published: 4002
+      - published: 4002
+        target: 4002
         protocol: tcp
         mode: ingress
-      - target: 5900
-        published: 5900
+      - published: 5900
+        target: 5900
         protocol: tcp
         mode: ingress
     deploy:
